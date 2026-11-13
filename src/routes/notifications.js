@@ -1,0 +1,4 @@
+const router=require('express').Router();const Notification=require('../models/Notification');const {requireAuth}=require('../middleware/auth');router.use(requireAuth);
+router.get('/',async(req,res,next)=>{try{const notifications=await Notification.find({user:req.user._id}).populate('actor','name role').sort({createdAt:-1}).limit(100);res.json({notifications,unread:notifications.filter(n=>!n.readAt).length});}catch(e){next(e)}});
+router.patch('/read-all',async(req,res,next)=>{try{await Notification.updateMany({user:req.user._id,readAt:null},{$set:{readAt:new Date()}});res.json({message:'Notifications marked as read.'});}catch(e){next(e)}});
+router.patch('/:id/read',async(req,res,next)=>{try{const n=await Notification.findOneAndUpdate({_id:req.params.id,user:req.user._id},{$set:{readAt:new Date()}},{new:true});if(!n)return res.status(404).json({message:'Notification not found.'});res.json({notification:n});}catch(e){next(e)}});module.exports=router;

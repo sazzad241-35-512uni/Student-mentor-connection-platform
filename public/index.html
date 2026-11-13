@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Mentor Connection Platform</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="Student Mentor home">
+        <span class="brand-mark">✿</span>
+        <span><strong>Student Mentor</strong><small>Connection Platform</small></span>
+      </a>
+      <nav class="nav-list" aria-label="Main navigation">
+        <button class="nav-link active" data-view="home">⌂ <span>Home</span></button>
+        <button class="nav-link" data-view="mentors">♙ <span>Find Mentor</span></button>
+        <button class="nav-link" data-view="students">♧ <span>Find Students</span></button>
+        <button class="nav-link" data-view="feed">▤ <span>Newsfeed</span></button>
+        <button class="nav-link" data-view="messages">▢ <span>Messages</span></button>
+        <button class="nav-link" data-view="research">⌕ <span>Research & Resources</span></button>
+        <button class="nav-link" data-view="events">▦ <span>Events</span></button>
+      </nav>
+      <div class="sidebar-note"><span>✿</span><p>Better Support<br />Brighter Future</p></div>
+      <div class="profile-mini"><div class="avatar avatar-user">M</div><div><strong>Mehedy</strong><small>Student account</small></div></div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+        <label class="search-box"><span>⌕</span><input id="globalSearch" type="search" placeholder="Search mentors, posts, research..." /></label>
+        <button class="icon-button" id="notificationButton" aria-label="Notifications">♧<span class="notification-dot"></span></button>
+        <div class="avatar avatar-user">M</div>
+      </header>
+
+      <section class="page-content">
+        <div class="welcome-banner">
+          <div>
+            <p class="eyebrow">LEARN · GUIDE · GROW TOGETHER</p>
+            <h1 id="welcomeTitle">Welcome</h1>
+            <p>Connect with the right mentor, share knowledge, and move forward together.</p>
+            <button class="primary-button" data-go="mentors">Find a Mentor <span>→</span></button>
+          </div>
+          <div class="flower-decoration" aria-hidden="true">✿</div>
+        </div>
+
+        <div class="section-heading"><div><p class="eyebrow">YOUR COMMUNITY</p><h2>What would you like to do?</h2></div></div>
+        <div class="action-grid">
+          <button class="action-card" data-go="mentors"><span class="action-icon">♙</span><strong>Find a Mentor</strong><small>Get guidance from experienced people</small></button>
+          <button class="action-card" data-go="students"><span class="action-icon">♧</span><strong>Find Students</strong><small>Meet peers and build connections</small></button>
+          <button class="action-card" data-go="research"><span class="action-icon">▤</span><strong>Research Resources</strong><small>Discover papers, notes and useful links</small></button>
+          <button class="action-card" data-go="events"><span class="action-icon">▦</span><strong>Upcoming Events</strong><small>Workshops, webinars and career talks</small></button>
+        </div>
+
+        <section class="content-section" id="mentorsSection">
+          <div class="section-heading"><div><p class="eyebrow">MAKE A CONNECTION</p><h2>Recommended Mentors</h2></div><button class="text-button" data-go="mentors">View all →</button></div>
+          <div class="filter-row">
+            <input id="mentorSearch" type="search" placeholder="Search by name or expertise..." />
+            <select id="fieldFilter" aria-label="Filter by field"><option value="all">All fields</option><option>Software Engineering</option><option>Data Science</option><option>Zoology</option><option>Research</option></select>
+          </div>
+          <div class="mentor-grid" id="mentorGrid"></div>
+        </section>
+
+        <div class="two-column">
+          <section class="content-section" id="feedSection">
+            <div class="section-heading"><div><p class="eyebrow">FROM YOUR COMMUNITY</p><h2>Latest Newsfeed</h2></div><button class="text-button" data-go="feed">View all →</button></div>
+            <form class="composer" id="postForm"><textarea id="postText" rows="2" maxlength="500" placeholder="Share an update, question, or opportunity..."></textarea><div class="composer-bottom"><small>Keep it helpful and respectful.</small><button class="primary-button" type="submit">Publish post</button></div></form>
+            <div class="feed-list" id="feedList"></div>
+          </section>
+          <section class="content-section" id="researchSection">
+            <div class="section-heading"><div><p class="eyebrow">KEEP LEARNING</p><h2>Research & Resources</h2></div><button class="text-button" data-go="research">Explore →</button></div>
+            <div class="resource-list" id="resourceList"></div>
+            <div class="section-heading event-heading"><div><p class="eyebrow">SAVE YOUR SPOT</p><h2>Upcoming Events</h2></div><button class="text-button" data-go="events">View all →</button></div>
+            <div id="eventList" class="event-list"></div>
+          </section>
+        </div>
+        <footer>© <span id="year"></span> Student Mentor Connection Platform · Learn, guide, grow together.</footer>
+      </section>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+</body>
+</html>
